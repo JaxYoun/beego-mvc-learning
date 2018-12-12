@@ -5,6 +5,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+//表的设计
 type User struct {
 	Id       int
 	Name     string
@@ -22,7 +23,7 @@ func init() {
 
 	//3.同步数据模型与数据库表
 	//name：注册步骤声明的数据库别名
-	//force：是否强制更新模型和表的结构【删了重建】，true：数据表结构会随着模型结构的改变而联动更新，false：表结构不会联动更新
+	//force：是否强制更新模型和表的结构【删了重建】，true：每次执行到这里都会删了重建数据表结构，false：表结构不会联动更新
 	//verbose：是否可见创建过程
-	orm.RunSyncdb("default", true, true)
+	orm.RunSyncdb("default", false, true)
 }
